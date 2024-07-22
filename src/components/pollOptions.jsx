@@ -13,9 +13,10 @@ export const PollOptions = ({ onOptionClick, OptList}) => {
               whileHover={{ scale: 1.1 }}
             >
               <StyledIconButton
-                background={isSelected ? 'rgba(0, 0, 0, 0.04)' : ''}
+                background={isSelected ? "rgba(0, 0, 0, 0.04)" : ""}
                 onClick={onOptionClick}
                 value={label}
+                data-testid={`thumbsUp-${index}`}
               >
                 <Icon />
               </StyledIconButton>

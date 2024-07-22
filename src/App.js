@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css';
-import { PollApp } from './pages/PollForm';
+import { PollForm } from './pages/PollForm';
 
 function App() {
   return (
     <div className="App">
-      <PollApp />
+      <PollForm />
     </div>
   );
 }

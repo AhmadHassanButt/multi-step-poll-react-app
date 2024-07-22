@@ -18,15 +18,21 @@ const SummaryMotionDivVariants = {
 const motionDivVariants = {
   enter: {
     opacity: 1,
-    transition: { duration: 0.3 },
-    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+    },
+    y:0,
   },
   exit: {
     opacity: 0,
-    transition: { duration: 0.3 },
-    y: "-100%",
-  },
+    transition: {
+      duration: 0.5,
+    },
+    y: "100%"
+  }
 };
+
 
 const MotionDivStyles = {
   height: "100%",
@@ -51,6 +57,7 @@ export const Carousel = ({ children, setCurrentStep }) => {
   const { dotsMarkup } = useMemo(() => {
     const dotsMarkup = children.map((_, index) => (
       <StyledDot
+        data-testid={`dot-${index}`}
         key={index}
         className={`dot ${currentIndex === index ? "active" : ""}`}
         onClick={() => handleDotClick(index)}

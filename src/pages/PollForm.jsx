@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useMemo } from 'react';
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Grid, Typography, Button, styled } from "@mui/material";
 import { Carousel, PollStep } from '../components';
 import { useOnSubmit } from '../hooks/useOnSubmit';
 import { Loader } from '../components/loader';
@@ -12,7 +12,7 @@ const Questions = [
   'Summary'
 ];
 
-export const PollApp = () => {
+export const PollForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -50,25 +50,38 @@ export const PollApp = () => {
   return (
     <Grid container>
       {result ? (
-        <>
+        <StyledCongoBox>
           <Box>
             <Typography variant="h4">
               Congratulations, your feedback is submitted.
             </Typography>
           </Box>
-          <Box>
+          <ButtonWrapper>
             <Button
               color="secondary"
               onClick={handleRefresh}
-              variant="outlined"
+              variant="contained"
             >
               Go Back
             </Button>
-          </Box>
-        </>
+          </ButtonWrapper>
+        </StyledCongoBox>
       ) : (
         <Carousel setCurrentStep={setCurrentStep}>{questionsMarkup}</Carousel>
       )}
     </Grid>
   );
 };
+
+const StyledCongoBox = styled(Box)({
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh",
+    justifyContent: "center",
+    width: "100vw",
+})
+
+const ButtonWrapper = styled(Box)({
+ marginTop: "20px",
+})
